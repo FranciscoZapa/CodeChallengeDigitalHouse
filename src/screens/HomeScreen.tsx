@@ -15,9 +15,6 @@ type HomeScreenProps = PropsWithChildren<{
 export const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {data, loading, error} = useProducts();
   const [filteredList, setFilteredList] = useState([]);
-  const handleFilterList = () => {
-    setFilteredList(filteredList);
-  };
   const list = useMemo(() => {
     if (filteredList && filteredList.length > 0) {
       return filteredList;
@@ -40,7 +37,7 @@ export const HomeScreen = ({navigation}: HomeScreenProps) => {
       <List
         list={data}
         navigation={navigation}
-        setFilteredList={handleFilterList}
+        setFilteredList={setFilteredList}
       />
     </Box>
   );
